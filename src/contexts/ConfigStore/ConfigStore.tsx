@@ -3,11 +3,11 @@ import React, { createContext, useContext, useReducer } from "react";
 import { ParentComponentProps } from "../../types";
 
 // prettier-ignore
-type ConfigAction =
+export type ConfigAction =
   | { type: "set-pensize", size: number }
   | { type: "set-color", color: Color }
 
-type ConfigState = {
+export type ConfigState = {
   penSize: number;
   color: Color;
 };
@@ -48,8 +48,9 @@ export const ConfigStoreProvider = ({ children }: ParentComponentProps) => {
   );
 };
 
-export const useConfigStore = () => {
-  return useContext(ConfigStoreContext) as ConfigStore;
+export const useConfigStore = (): [ConfigState, React.Dispatch<ConfigAction>] => {
+  const store = useContext(ConfigStoreContext);
+  return [store.state, store.dispatch];
 };
 
-export default reducer;
+export default ConfigStoreProvider;

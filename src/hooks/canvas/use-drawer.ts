@@ -1,5 +1,7 @@
 import { MutableRefObject, useCallback, useEffect } from "react";
+import { ConfigState, useConfigStore } from "../../contexts/ConfigStore/ConfigStore";
 import { toCanvasCoordinates } from "../../helpers/canvas";
+import { buildContextFromConfig } from "../../services/canvas-context-service";
 import { useReducerRef } from "../ref";
 import useGlobalEventListener from "../use-global-event-listener";
 
@@ -46,20 +48,25 @@ type UseDrawerProps = {
   canvasRef: MutableRefObject<HTMLCanvasElement>;
 };
 
-const performDraw = (canvas: HTMLCanvasElement, x1: number, y1: number, x2: number, y2: number) => {
+const performDraw = (
+  canvas: HTMLCanvasElement,
+  x1: number,
+  y1: number,
+  x2: number,
+  y2: number,
+  config: ConfigState
+) => {
   // console.log(
   //   `from: [${Math.floor(x1)}, ${Math.floor(y1)}], to: [${Math.floor(x2)}, ${Math.floor(y2)}]`
   // );
   const canvasContext = canvas?.getContext("2d") || null;
   if (canvasContext !== null) {
-    canvasContext.lineCap = "round";
-    canvasContext.beginPath();
-    canvasContext.strokeStyle = "black";
-    canvasContext.lineWidth = 3;
-    canvasContext.moveTo(x1, y1);
-    canvasContext.lineTo(x2, y2);
-    canvasContext.stroke();
-    canvasContext.closePath();
+    const context = buildContextFromConfig(config, canvasContext);
+    context.beginPath();
+    context.moveTo(x1, y1);
+    context.lineTo(x2, y2);
+    context.stroke();
+    context.closePath();
     // const toDraw = getImageDataFromPen(canvasContext);
     // canvasContext.putImageData(toDraw, x2, y2);
     return;
@@ -68,6 +75,7 @@ const performDraw = (canvas: HTMLCanvasElement, x1: number, y1: number, x2: numb
 
 const useDrawer = ({ canvasRef }: UseDrawerProps) => {
   const [state, dispatch, stateRef] = useReducerRef(reducer, defaultDrawerState);
+  const [configState] = useConfigStore();
 
   const handleMouseUp = useCallback((e: MouseEvent) => {
     dispatch({ type: "pen_up" });
@@ -80,7 +88,7 @@ const useDrawer = ({ canvasRef }: UseDrawerProps) => {
   const handleMouseMove = useCallback((e: MouseEvent) => {
     const [x, y] = toCanvasCoordinates(canvasRef.current, e.pageX, e.pageY);
     if (stateRef.current.isDrawing && canvasRef.current) {
-      performDraw(canvasRef.current, stateRef.current.x, stateRef.current.y, x, y);
+      performDraw(canvasRef.current, stateRef.current.x, stateRef.current.y, x, y, configState);
       dispatch({ type: "draw" });
     }
     if (canvasRef.current) {
