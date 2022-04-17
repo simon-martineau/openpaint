@@ -1,0 +1,3 @@
+interface CanvasModuleProps {
+  canvas: HTMLCanvasElement;
+}

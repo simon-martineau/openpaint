@@ -1,15 +1,15 @@
 import { useEffect } from "react";
 
-const useGlobalEventListener = <K extends keyof WindowEventMap>(
+const useGlobalEventListener = <K extends keyof DocumentEventMap>(
   type: K,
-  callback: (ev: WindowEventMap[K]) => any
+  callback: (ev: DocumentEventMap[K]) => any
 ) => {
   useEffect(() => {
     console.log("Registered global event");
-    window.addEventListener(type, callback);
+    document.addEventListener(type, callback);
 
     return () => {
-      window.removeEventListener(type, callback);
+      document.removeEventListener(type, callback);
     };
   }, [callback]);
 };
