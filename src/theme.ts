@@ -1,7 +1,12 @@
 export type OpenPaintTheme = {
   background: string;
   toolbar: string;
-  paintbar: string;
+  highlight: string;
+  neutral: string;
+  paintbar: {
+    background: string;
+    sectionBackground: string;
+  };
   canvasBorder: string;
   text: string;
 };
@@ -9,9 +14,14 @@ export type OpenPaintTheme = {
 export const pastelTheme: OpenPaintTheme = {
   background: "#eee",
   toolbar: "#FF9AA2",
-  paintbar: "#FFB7B2",
+  highlight: "#ff9099",
+  neutral: "#ffe1e3",
+  paintbar: {
+    background: "#FFB7B2",
+    sectionBackground: "#eee",
+  },
   canvasBorder: "1px solid #FFB7B2",
-  text: "#ddd",
+  text: "#333",
 };
 
 // The default export is the default theme

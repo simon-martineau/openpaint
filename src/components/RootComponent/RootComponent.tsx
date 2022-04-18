@@ -16,7 +16,8 @@ const StyledPaintContainer = styled.div`
 
 const GlobalStyle = createGlobalStyle`
   body {
-    background-color: ${(props) => props.theme.background}
+    background-color: ${(props) => props.theme.background};
+    font-family: 'Karla', sans-serif;
   }
 `;
 
@@ -26,7 +27,7 @@ const RootComponent = () => {
       <GlobalStyle />
       <Toolbar style={{ flexShrink: 0, height: 64 }} />
       <StyledPaintContainer style={{ flexShrink: 1, flexGrow: 1, minHeight: 0 }}>
-        <PaintBar style={{ width: 150, flexShrink: 0 }} />
+        <PaintBar style={{ width: 200, flexShrink: 0 }} />
         {/* <div style={{ flexShrink: 1, flexGrow: 1, height: "550", backgroundColor: "#ff0000" }} /> */}
         <CanvasWrapper style={{ flexShrink: 1, flexGrow: 1, minWidth: 0 }} />
       </StyledPaintContainer>
