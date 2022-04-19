@@ -6,6 +6,7 @@ export type OpenPaintTheme = {
   paintbar: {
     background: string;
     sectionBackground: string;
+    sectionBorder: string;
   };
   canvasBorder: string;
   text: string;
@@ -19,6 +20,7 @@ export const pastelTheme: OpenPaintTheme = {
   paintbar: {
     background: "#FFB7B2",
     sectionBackground: "#eee",
+    sectionBorder: "#fff",
   },
   canvasBorder: "1px solid #FFB7B2",
   text: "#333",
