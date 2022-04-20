@@ -1,5 +1,3 @@
-import { Hash } from "crypto";
-
 type Point = [number, number];
 type PenCache = {
   [key: string]: ImageData;
