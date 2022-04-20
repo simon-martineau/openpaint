@@ -18,7 +18,7 @@ export type ConfigState = {
 
 const defaultConfigState: ConfigState = {
   penSize: 3,
-  color: Color("#1d1c1c"),
+  color: Color("#c92424"),
   tool: "pen",
 };
 
