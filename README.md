@@ -1,6 +1,11 @@
+
+# OpenPaint
+> Browser-based drawing software
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1b0d615e-3307-44d5-9bbb-06c6c72af962/deploy-status)](https://app.netlify.com/sites/openpaint/deploys)
 
-# Getting Started with Create React App
+![image](https://user-images.githubusercontent.com/57965493/164274169-ccaf308e-b3da-4e51-811d-a9e11c41c895.png)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
