@@ -30,6 +30,7 @@ export interface ToggleButtonProps extends ParentComponentProps, StylableCompone
   activeDefault?: boolean;
   override?: boolean;
   overrideValue?: boolean;
+  value?: number | string;
 }
 
 const ToggleButton = (props: ToggleButtonProps) => {

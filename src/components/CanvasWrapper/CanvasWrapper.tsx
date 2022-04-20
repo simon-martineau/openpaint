@@ -1,6 +1,7 @@
 import React, { CSSProperties, MutableRefObject, useRef } from "react";
 import styled, { useTheme } from "styled-components";
 import { useDrawer } from "../../hooks/canvas";
+import ConfigStoreViewer from "../_temp/ConfigStoreViewer";
 
 const StyledWrapper = styled.div`
   overflow: auto;
@@ -31,6 +32,7 @@ const CanvasWrapper = ({ style }: CanvasProps) => {
         width="1150"
         height="650"
       ></canvas>
+      <ConfigStoreViewer />
       <div style={{ userSelect: "none" }}>
         <p>isDrawing: {state.isDrawing ? "true" : "false"}</p>
         <p>lastX: {state.lastX}</p>

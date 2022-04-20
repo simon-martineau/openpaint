@@ -2,19 +2,24 @@ import Color from "color";
 import React, { createContext, useContext, useReducer } from "react";
 import { ParentComponentProps } from "../../types";
 
+export type Tool = "pen" | "brush" | "fill" | "eraser";
+
 // prettier-ignore
 export type ConfigAction =
+  | { type: "set-tool", tool: Tool}
   | { type: "set-pensize", size: number }
   | { type: "set-color", color: Color }
 
 export type ConfigState = {
   penSize: number;
   color: Color;
+  tool: Tool;
 };
 
 const defaultConfigState: ConfigState = {
   penSize: 3,
   color: Color("#1d1c1c"),
+  tool: "pen",
 };
 
 const reducer = (state: ConfigState, action: ConfigAction): ConfigState => {
@@ -23,6 +28,8 @@ const reducer = (state: ConfigState, action: ConfigAction): ConfigState => {
       return { ...state, penSize: action.size };
     case "set-color":
       return { ...state, color: action.color };
+    case "set-tool":
+      return { ...state, tool: action.tool };
   }
 };
 
