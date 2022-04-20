@@ -3,9 +3,9 @@
 > Browser-based drawing software
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1b0d615e-3307-44d5-9bbb-06c6c72af962/deploy-status)](https://app.netlify.com/sites/openpaint/deploys)
+[![codecov](https://codecov.io/gh/simon-martineau/openpaint/branch/main/graph/badge.svg?token=lS422IPUdx)](https://codecov.io/gh/simon-martineau/openpaint)
 
 ![image](https://user-images.githubusercontent.com/57965493/164274169-ccaf308e-b3da-4e51-811d-a9e11c41c895.png)
-[![codecov](https://codecov.io/gh/simon-martineau/openpaint/branch/main/graph/badge.svg?token=lS422IPUdx)](https://codecov.io/gh/simon-martineau/openpaint)
 
 
 
