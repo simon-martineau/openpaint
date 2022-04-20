@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1b0d615e-3307-44d5-9bbb-06c6c72af962/deploy-status)](https://app.netlify.com/sites/openpaint/deploys)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
