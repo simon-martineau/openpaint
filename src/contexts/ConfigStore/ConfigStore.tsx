@@ -33,12 +33,12 @@ const reducer = (state: ConfigState, action: ConfigAction): ConfigState => {
   }
 };
 
-type ConfigStore = {
+export type ConfigStore = {
   state: ConfigState;
   dispatch: React.Dispatch<ConfigAction>;
 };
 
-const defaultConfigStore: ConfigStore = {
+export const defaultConfigStore: ConfigStore = {
   state: defaultConfigState,
   dispatch: () => {},
 };

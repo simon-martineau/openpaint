@@ -39,12 +39,13 @@ const ToggleButton = (props: ToggleButtonProps) => {
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     setActive(!active);
-    onToggle && !override && onToggle(!active);
+    onToggle && onToggle(!active);
   };
 
   return (
     <StyledToggleButton
       data-testid="toggle-button"
+      data-active={override ? overrideValue : active}
       style={style}
       className={className}
       active={override ? overrideValue : active}

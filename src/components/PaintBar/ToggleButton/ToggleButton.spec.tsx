@@ -14,12 +14,10 @@ describe("ToggleButton", () => {
   });
 
   it("should be indifferent to clicks when having override", () => {
-    const mockCallback = jest.fn();
-    render(<ToggleButton onToggle={mockCallback} override overrideValue={true} />);
+    render(<ToggleButton override overrideValue={true} />);
 
+    expect(screen.getByTestId("toggle-button")).toHaveAttribute("data-active", "true");
     fireEvent.click(screen.getByTestId("toggle-button"));
-    fireEvent.click(screen.getByTestId("toggle-button"));
-
-    expect(mockCallback.mock.calls).toHaveLength(0);
+    expect(screen.getByTestId("toggle-button")).toHaveAttribute("data-active", "true");
   });
 });
