@@ -5,7 +5,7 @@ const ConfigStoreViewer = () => {
 
   const prettyPrintState = JSON.stringify(state);
 
-  return <div style={{ fontFamily: "monospace" }}>{prettyPrintState}</div>;
+  return <div style={{ fontFamily: "monospace", userSelect: "none" }}>{prettyPrintState}</div>;
 };
 
 export default ConfigStoreViewer;

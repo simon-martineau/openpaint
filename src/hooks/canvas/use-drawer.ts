@@ -83,6 +83,8 @@ const useDrawer = ({ canvasRef }: UseDrawerProps) => {
 
   const handleMouseDown = useCallback((e: MouseEvent) => {
     dispatch({ type: "pen_down" });
+    const [x, y] = toCanvasCoordinates(canvasRef.current, e.pageX, e.pageY);
+    performDraw(canvasRef.current, stateRef.current.x, stateRef.current.y, x, y, configState);
   }, []);
 
   const handleMouseMove = useCallback((e: MouseEvent) => {
@@ -99,16 +101,17 @@ const useDrawer = ({ canvasRef }: UseDrawerProps) => {
   useEffect(() => {
     if (canvasRef.current) {
       const canvas = canvasRef.current;
-      canvas.addEventListener("mousemove", handleMouseMove);
+      // canvas.addEventListener("mousemove", handleMouseMove);
       canvas.addEventListener("mousedown", handleMouseDown);
 
       return () => {
-        canvas.removeEventListener("mousemove", handleMouseMove);
+        // canvas.removeEventListener("mousemove", handleMouseMove);
         canvas.removeEventListener("mousedown", handleMouseDown);
       };
     }
   }, []);
 
+  useGlobalEventListener("mousemove", handleMouseMove);
   useGlobalEventListener("mouseup", handleMouseUp);
 
   return state;
