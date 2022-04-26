@@ -1,8 +1,7 @@
-import { Slider } from "@mui/material";
 import PaintBarSection from "../PaintBarSection";
 
 const PensizeSelection = () => {
-  return <PaintBarSection title="Pen size"></PaintBarSection>;
+  return <PaintBarSection title="Size"></PaintBarSection>;
 };
 
 export default PensizeSelection;
