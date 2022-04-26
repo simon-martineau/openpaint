@@ -1,13 +1,11 @@
-
 # OpenPaint
+
 > Browser-based drawing software
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1b0d615e-3307-44d5-9bbb-06c6c72af962/deploy-status)](https://app.netlify.com/sites/openpaint/deploys)
 [![codecov](https://codecov.io/gh/simon-martineau/openpaint/branch/main/graph/badge.svg?token=lS422IPUdx)](https://codecov.io/gh/simon-martineau/openpaint)
 
 ![image](https://user-images.githubusercontent.com/57965493/164274169-ccaf308e-b3da-4e51-811d-a9e11c41c895.png)
-
-
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -53,3 +51,6 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+Design basis
+https://dribbble.com/shots/16820089-anywhere-app-redesign-concept/attachments/11876684?mode=media

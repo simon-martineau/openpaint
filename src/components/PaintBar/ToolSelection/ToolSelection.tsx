@@ -7,7 +7,7 @@ import ToggleButton from "../ToggleButton";
 const StyledToolButtonGroup = styled(ButtonGroup)`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 5px;
+  grid-gap: 10px;
 `;
 
 const StyledToggleButton = styled(ToggleButton)`
