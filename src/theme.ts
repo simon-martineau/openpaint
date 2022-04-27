@@ -3,6 +3,7 @@ export type OpenPaintTheme = {
   toolbar: string;
   highlight: string;
   neutral: string;
+  neutralFocus: string;
   paintbar: {
     background: string;
     sectionBackground: string;
@@ -17,6 +18,7 @@ export const pastelTheme: OpenPaintTheme = {
   toolbar: "#272A37",
   highlight: "#9149D9",
   neutral: "#4E546A",
+  neutralFocus: "#C4C4C4",
   paintbar: {
     background: "#323644",
     sectionBackground: "#eee",
