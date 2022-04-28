@@ -4,7 +4,7 @@ import Slider from "../Slider";
 const PensizeSelection = () => {
   return (
     <PaintBarSection title="Size">
-      <Slider />
+      <Slider initialValue={25} />
     </PaintBarSection>
   );
 };
