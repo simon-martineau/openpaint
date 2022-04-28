@@ -1,4 +1,5 @@
 import React, { CSSProperties, MutableRefObject, useRef } from "react";
+import { useDrawer } from "src/hooks/canvas";
 import styled, { useTheme } from "styled-components";
 
 const StyledWrapper = styled.div`
@@ -12,6 +13,7 @@ interface CanvasProps {
 
 const CanvasWrapper = ({ style }: CanvasProps) => {
   const canvasRef = useRef() as MutableRefObject<HTMLCanvasElement>;
+  useDrawer({ canvasRef });
   const theme = useTheme();
 
   return (

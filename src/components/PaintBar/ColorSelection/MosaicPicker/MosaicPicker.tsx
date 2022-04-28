@@ -48,6 +48,7 @@ const MosaicPicker = (props: MosaicPickerProps): JSX.Element => {
     <StyledMosaicWrapper {...{ style, className }}>
       {mosaicColors.map((color, index) => (
         <StyledColorPad
+          key={index}
           color={color}
           selected={index === activeIndex}
           onClick={() => handlePadClick(index)}
