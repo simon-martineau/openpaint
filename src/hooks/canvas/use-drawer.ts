@@ -81,22 +81,28 @@ const useDrawer = ({ canvasRef }: UseDrawerProps) => {
     dispatch({ type: "pen_up" });
   }, []);
 
-  const handleMouseDown = useCallback((e: MouseEvent) => {
-    dispatch({ type: "pen_down" });
-    const [x, y] = toCanvasCoordinates(canvasRef.current, e.pageX, e.pageY);
-    performDraw(canvasRef.current, stateRef.current.x, stateRef.current.y, x, y, configState);
-  }, []);
-
-  const handleMouseMove = useCallback((e: MouseEvent) => {
-    const [x, y] = toCanvasCoordinates(canvasRef.current, e.pageX, e.pageY);
-    if (stateRef.current.isDrawing && canvasRef.current) {
+  const handleMouseDown = useCallback(
+    (e: MouseEvent) => {
+      dispatch({ type: "pen_down" });
+      const [x, y] = toCanvasCoordinates(canvasRef.current, e.pageX, e.pageY);
       performDraw(canvasRef.current, stateRef.current.x, stateRef.current.y, x, y, configState);
-      dispatch({ type: "draw" });
-    }
-    if (canvasRef.current) {
-      dispatch({ type: "pen_move", x, y });
-    }
-  }, []);
+    },
+    [configState]
+  );
+
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      const [x, y] = toCanvasCoordinates(canvasRef.current, e.pageX, e.pageY);
+      if (stateRef.current.isDrawing && canvasRef.current) {
+        performDraw(canvasRef.current, stateRef.current.x, stateRef.current.y, x, y, configState);
+        dispatch({ type: "draw" });
+      }
+      if (canvasRef.current) {
+        dispatch({ type: "pen_move", x, y });
+      }
+    },
+    [configState]
+  );
 
   useEffect(() => {
     if (canvasRef.current) {

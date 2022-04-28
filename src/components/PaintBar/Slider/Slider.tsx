@@ -1,4 +1,5 @@
-import React, { MutableRefObject, useEffect, useRef, useState } from "react";
+import React, { MutableRefObject, useCallback, useRef, useState } from "react";
+import { useStateRef } from "src/hooks/ref";
 import useGlobalEventListener from "src/hooks/use-global-event-listener";
 import { StylableComponentProps } from "src/types";
 import styled from "styled-components";
@@ -58,13 +59,15 @@ interface SliderDragState {
 
 interface SliderComponentProps extends StylableComponentProps {
   initialValue: number;
+  onChange?: (value: number) => void;
 }
 
 const Slider = (props: SliderComponentProps) => {
-  const { style, className, initialValue } = props;
-  const [isDragging, setIsDragging] = useState(false);
+  const { style, className, initialValue, onChange } = props;
   const [percentage, setPercentage] = useState(initialValue);
-  const [sliderDragState, setSliderDragState] = useState<SliderDragState>({
+  // We use StateRefs so we can define the globalEventListeners only once
+  const [isDragging, setIsDragging, isDraggingRef] = useStateRef(false);
+  const [, setSliderDragState, sliderDragStateRef] = useStateRef<SliderDragState>({
     mouseBeginX: 0,
     sliderBeginX: 0,
   });
@@ -72,11 +75,11 @@ const Slider = (props: SliderComponentProps) => {
   const sliderLineRef = useRef() as MutableRefObject<HTMLDivElement>;
 
   const setSliderPosition = (position: number) => {
-    console.log("setSliderPosition:", position);
     const sliderBeginX = sliderLineRef.current.getBoundingClientRect().left;
     const sliderWidth = sliderLineRef.current.getBoundingClientRect().width;
-    console.log("sliderWidth:", sliderWidth);
-    setPercentage(asPercent((position - sliderBeginX) / sliderWidth));
+    const percentage = asPercent((position - sliderBeginX) / sliderWidth);
+    setPercentage(percentage);
+    onChange && onChange(percentage);
   };
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -87,17 +90,17 @@ const Slider = (props: SliderComponentProps) => {
     });
   };
 
-  const handleMouseUp = (e: MouseEvent) => {
+  const handleMouseUp = useCallback((e: MouseEvent) => {
     setIsDragging(false);
-  };
+  }, []);
 
-  const handleMouseMove = (e: MouseEvent) => {
-    if (isDragging) {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
+    if (isDraggingRef.current) {
       e.stopPropagation();
-      const deltaFromBeginX = e.pageX - sliderDragState.mouseBeginX;
-      setSliderPosition(sliderDragState.sliderBeginX + deltaFromBeginX);
+      const deltaFromBeginX = e.pageX - sliderDragStateRef.current.mouseBeginX;
+      setSliderPosition(sliderDragStateRef.current.sliderBeginX + deltaFromBeginX);
     }
-  };
+  }, []);
 
   useGlobalEventListener("mouseup", handleMouseUp);
   useGlobalEventListener("mousemove", handleMouseMove);
