@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
 import styled from "styled-components";
+import ColorSelection from "./ColorSelection";
 import PensizeSelection from "./PensizeSelection";
 import ToolSelection from "./ToolSelection";
 
@@ -20,6 +21,7 @@ const PaintBar = ({ style }: PaintBarProps) => {
     <StyledPaintBar style={{ ...style }}>
       <ToolSelection />
       <PensizeSelection />
+      <ColorSelection />
     </StyledPaintBar>
   );
 };
