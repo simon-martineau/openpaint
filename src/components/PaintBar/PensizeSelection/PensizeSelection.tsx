@@ -11,7 +11,7 @@ const PensizeSelection = () => {
 
   return (
     <PaintBarSection title="Size">
-      <Slider initialValue={state.penSize} onChange={handleSliderChange} />
+      <Slider initialValue={state.penSize} min={1} max={100} onChange={handleSliderChange} />
     </PaintBarSection>
   );
 };

@@ -34,7 +34,7 @@ const StyledSliderHandle = styled.div<StyledSliderHandleProps>`
   height: ${sizes.normal.handle}px;
   left: ${(props) => props.percentage}%;
 
-  border: 1px solid ${(props) => props.theme.highlight};
+  border: 2px solid ${(props) => props.theme.highlight};
   cursor: pointer;
 `;
 
@@ -42,14 +42,15 @@ const calcSliderCenterX = (left: number) => {
   return left + sizes.normal.handle / 2;
 };
 
-const asPercent = (value: number) => {
-  const percent = value * 100;
-  if (percent < 0) {
-    return 0;
-  } else if (percent > 100) {
-    return 100;
+const decimalToBoundedValue = (min: number, max: number, value: number) => {
+  const diff = max - min;
+  const newValue = value * diff + min;
+  if (newValue < min) {
+    return min;
+  } else if (newValue > max) {
+    return max;
   }
-  return percent;
+  return newValue;
 };
 
 interface SliderDragState {
@@ -58,12 +59,14 @@ interface SliderDragState {
 }
 
 interface SliderComponentProps extends StylableComponentProps {
+  min: number;
+  max: number;
   initialValue: number;
   onChange?: (value: number) => void;
 }
 
 const Slider = (props: SliderComponentProps) => {
-  const { style, className, initialValue, onChange } = props;
+  const { style, className, initialValue, onChange, min, max } = props;
   const [percentage, setPercentage] = useState(initialValue);
   // We use StateRefs so we can define the globalEventListeners only once
   const [isDragging, setIsDragging, isDraggingRef] = useStateRef(false);
@@ -77,9 +80,11 @@ const Slider = (props: SliderComponentProps) => {
   const setSliderPosition = (position: number) => {
     const sliderBeginX = sliderLineRef.current.getBoundingClientRect().left;
     const sliderWidth = sliderLineRef.current.getBoundingClientRect().width;
-    const percentage = asPercent((position - sliderBeginX) / sliderWidth);
+    const fraction = (position - sliderBeginX) / sliderWidth;
+    const percentage = decimalToBoundedValue(0, 100, fraction);
     setPercentage(percentage);
-    onChange && onChange(percentage);
+    const value = decimalToBoundedValue(min, max, fraction);
+    onChange && onChange(value);
   };
 
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
