@@ -1,18 +1,20 @@
-import { SwatchesPicker } from "react-color";
+import Color from "color";
+import { useConfigStore } from "src/contexts/ConfigStore/ConfigStore";
 import PaintBarSection from "../PaintBarSection";
 import MosaicPicker from "./MosaicPicker";
 
 const ColorSelection = () => {
+  const [, dispatch] = useConfigStore();
+
+  const handleColorChange = (color: string) => {
+    dispatch({ type: "set-color", color: Color(color) });
+  };
+
   return (
     <PaintBarSection title="Color">
-      <MosaicPicker />
+      <MosaicPicker onChange={handleColorChange} />
     </PaintBarSection>
   );
 };
 
 export default ColorSelection;
-
-/*You can import AlphaPicker BlockPicker ChromePicker
- CirclePicker CompactPicker GithubPicker HuePicker
-  MaterialPicker PhotoshopPicker SketchPicker SliderPicker
-   SwatchesPicker TwitterPicker respectively. */
