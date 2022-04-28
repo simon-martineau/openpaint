@@ -32,14 +32,6 @@ const CanvasWrapper = ({ style }: CanvasProps) => {
         width="1150"
         height="650"
       ></canvas>
-      <ConfigStoreViewer />
-      <div style={{ userSelect: "none" }}>
-        <p>isDrawing: {state.isDrawing ? "true" : "false"}</p>
-        <p>lastX: {state.lastX}</p>
-        <p>lastY: {state.lastY}</p>
-        <p>x: {state.x}</p>
-        <p>y: {state.y}</p>
-      </div>
     </StyledWrapper>
   );
 };
