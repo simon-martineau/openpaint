@@ -25,7 +25,9 @@ interface StyledSliderHandleProps {
   percentage: number;
 }
 
-const StyledSliderHandle = styled.div<StyledSliderHandleProps>`
+const StyledSliderHandle = styled.div.attrs<StyledSliderHandleProps>((props) => ({
+  percentage: props.percentage,
+}))<StyledSliderHandleProps>`
   border-radius: 1000px;
   position: absolute;
   transform: translate(-10px, calc(-${sizes.normal.handle / 2}px + ${sizes.normal.line / 2}px));

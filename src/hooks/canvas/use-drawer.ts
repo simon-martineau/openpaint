@@ -115,7 +115,7 @@ const useDrawer = ({ canvasRef }: UseDrawerProps) => {
         canvas.removeEventListener("mousedown", handleMouseDown);
       };
     }
-  }, []);
+  }, [handleMouseDown]);
 
   useGlobalEventListener("mousemove", handleMouseMove);
   useGlobalEventListener("mouseup", handleMouseUp);
