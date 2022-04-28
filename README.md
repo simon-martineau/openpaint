@@ -5,7 +5,7 @@
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1b0d615e-3307-44d5-9bbb-06c6c72af962/deploy-status)](https://app.netlify.com/sites/openpaint/deploys)
 [![codecov](https://codecov.io/gh/simon-martineau/openpaint/branch/main/graph/badge.svg?token=lS422IPUdx)](https://codecov.io/gh/simon-martineau/openpaint)
 
-![image](https://user-images.githubusercontent.com/57965493/164274169-ccaf308e-b3da-4e51-811d-a9e11c41c895.png)
+![image](https://user-images.githubusercontent.com/57965493/165687046-d7cf9b35-7fec-4eff-8a54-a9f002020eed.png)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
