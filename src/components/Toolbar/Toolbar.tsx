@@ -15,7 +15,7 @@ const StyledBranding = styled.div`
   top: 50%;
   transform: translate(-50%, -50%);
   font-size: 1.4em;
-  color: ${(props) => props.theme.highlightSoft};
+  color: ${(props) => props.theme.branding};
   font-weight: bold;
   user-select: none;
 `;

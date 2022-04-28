@@ -31,7 +31,7 @@ const StyledSliderHandle = styled.div.attrs<StyledSliderHandleProps>((props) => 
   border-radius: 1000px;
   position: absolute;
   transform: translate(-10px, calc(-${sizes.normal.handle / 2}px + ${sizes.normal.line / 2}px));
-  background-color: ${(props) => props.theme.neutralFocus};
+  background-color: ${(props) => props.theme.sliderHandle};
   width: ${sizes.normal.handle}px;
   height: ${sizes.normal.handle}px;
   left: ${(props) => props.percentage}%;
