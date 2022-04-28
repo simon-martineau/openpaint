@@ -1,7 +1,5 @@
 import React, { CSSProperties, MutableRefObject, useRef } from "react";
 import styled, { useTheme } from "styled-components";
-import { useDrawer } from "../../hooks/canvas";
-import ConfigStoreViewer from "../_temp/ConfigStoreViewer";
 
 const StyledWrapper = styled.div`
   overflow: auto;
@@ -14,7 +12,6 @@ interface CanvasProps {
 
 const CanvasWrapper = ({ style }: CanvasProps) => {
   const canvasRef = useRef() as MutableRefObject<HTMLCanvasElement>;
-  const state = useDrawer({ canvasRef });
   const theme = useTheme();
 
   return (
