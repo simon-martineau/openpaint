@@ -1,6 +1,6 @@
+import Slider from "src/components/common/Slider";
 import { useConfigStore } from "src/contexts/ConfigStore/ConfigStore";
 import PaintBarSection from "../PaintBarSection";
-import Slider from "../Slider";
 
 const PensizeSelection = () => {
   const [state, dispatch] = useConfigStore();

@@ -1,34 +1,72 @@
-export type OpenPaintTheme = {
+export type OpenPaintThemeSpecification = {
   background: string;
   toolbar: string;
+  toolbarItem: string;
   highlight: string;
-  highlightSoft: string;
+  highlightContrast: string;
+  menuBackground: string;
+  branding: string;
   neutral: string;
-  neutralFocus: string;
+  sliderHandle: string;
   paintbar: {
     background: string;
-    sectionBackground: string;
-    sectionBorder: string;
+    sectionTitle: string;
+    colorPadBorder: string;
+    colorPadHighlightBorder: string;
   };
   canvasBorder: string;
   text: string;
 };
 
-export const pastelTheme: OpenPaintTheme = {
+export const defaultTheme: OpenPaintThemeSpecification = {
   background: "#4E546A",
   toolbar: "#272A37",
+  toolbarItem: "#eee",
   highlight: "#9149D9",
-  highlightSoft: "#BA93E1",
+  highlightContrast: "#FFF",
+  menuBackground: "#EEE",
+  branding: "#BA93E1",
   neutral: "#4E546A",
-  neutralFocus: "#C4C4C4",
+  sliderHandle: "#C4C4C4",
   paintbar: {
     background: "#323644",
-    sectionBackground: "#eee",
-    sectionBorder: "#fff",
+    sectionTitle: "#fff",
+    colorPadBorder: "##4E546A",
+    colorPadHighlightBorder: "#fff",
   },
   canvasBorder: "1px solid #9149D9",
   text: "#eee",
 };
 
+export const sketchBookTheme: OpenPaintThemeSpecification = {
+  background: "#F4E3C5",
+  toolbar: "#816D51",
+  toolbarItem: "#eee",
+  highlight: "#816D51",
+  highlightContrast: "#FFF",
+  menuBackground: "#EEE",
+  branding: "#ddd",
+  neutral: "#D4BB9F",
+  sliderHandle: "#C7B59C",
+  paintbar: {
+    background: "#DCCC9C",
+    sectionTitle: "#53422C",
+    colorPadBorder: "#816D51",
+    colorPadHighlightBorder: "#FFF",
+  },
+  canvasBorder: "1px solid #D4BB9F",
+  text: "#eee",
+};
+
+export interface OpenPaintTheme {
+  specification: OpenPaintThemeSpecification;
+  name: string;
+}
+
+export const themes: OpenPaintTheme[] = [
+  { name: "OpenPaint (default)", specification: defaultTheme },
+  { name: "Sketchbook", specification: sketchBookTheme },
+];
+
 // The default export is the default theme
-export default pastelTheme;
+export default defaultTheme;

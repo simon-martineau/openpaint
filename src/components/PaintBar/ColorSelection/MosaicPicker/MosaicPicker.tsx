@@ -15,14 +15,14 @@ interface StyledColorPadProps {
 }
 
 const SelectedColorPadAttributes = css`
-  border: 1px solid #eee;
-  box-shadow: 0 0 0 2px #eee;
+  border: 1px solid ${(props) => props.theme.paintbar.colorPadHighlightBorder};
+  box-shadow: 0 0 0 2px ${(props) => props.theme.paintbar.colorPadHighlightBorder};
 `;
 
 const StyledColorPad = styled.div<StyledColorPadProps>`
   aspect-ratio: 1;
   background-color: ${(props) => props.color};
-  border: 1px solid ${(props) => props.theme.neutral};
+  border: 1px solid ${(props) => props.theme.paintbar.colorPadBorder};
   border-radius: 5px;
   cursor: pointer;
   ${(props) => (props.selected ? SelectedColorPadAttributes : "")}
