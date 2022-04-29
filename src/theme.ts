@@ -1,7 +1,10 @@
-export type OpenPaintTheme = {
+export type OpenPaintThemeSpecification = {
   background: string;
   toolbar: string;
+  toolbarItem: string;
   highlight: string;
+  highlightContrast: string;
+  menuBackground: string;
   branding: string;
   neutral: string;
   sliderHandle: string;
@@ -15,10 +18,13 @@ export type OpenPaintTheme = {
   text: string;
 };
 
-export const defaultTheme: OpenPaintTheme = {
+export const defaultTheme: OpenPaintThemeSpecification = {
   background: "#4E546A",
   toolbar: "#272A37",
+  toolbarItem: "#eee",
   highlight: "#9149D9",
+  highlightContrast: "#FFF",
+  menuBackground: "#EEE",
   branding: "#BA93E1",
   neutral: "#4E546A",
   sliderHandle: "#C4C4C4",
@@ -32,10 +38,13 @@ export const defaultTheme: OpenPaintTheme = {
   text: "#eee",
 };
 
-export const sketchBookTheme: OpenPaintTheme = {
+export const sketchBookTheme: OpenPaintThemeSpecification = {
   background: "#F4E3C5",
   toolbar: "#816D51",
+  toolbarItem: "#eee",
   highlight: "#816D51",
+  highlightContrast: "#FFF",
+  menuBackground: "#EEE",
   branding: "#ddd",
   neutral: "#D4BB9F",
   sliderHandle: "#C7B59C",
@@ -49,5 +58,15 @@ export const sketchBookTheme: OpenPaintTheme = {
   text: "#eee",
 };
 
+export interface OpenPaintTheme {
+  specification: OpenPaintThemeSpecification;
+  name: string;
+}
+
+export const themes: OpenPaintTheme[] = [
+  { name: "OpenPaint (default)", specification: defaultTheme },
+  { name: "Sketchbook", specification: sketchBookTheme },
+];
+
 // The default export is the default theme
-export default sketchBookTheme;
+export default defaultTheme;
