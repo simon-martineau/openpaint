@@ -91,9 +91,9 @@ const SelectMenu = (props: SelectMenuProps) => {
   });
 
   return (
-    <StyledWrapper>
+    <StyledWrapper ref={ref}>
       {wrappedButton}
-      <StyledMenu show={isActive} align={align} width={width} ref={ref}>
+      <StyledMenu show={isActive} align={align} width={width}>
         {choices.map((choice, index) => (
           <StyledMenuButton
             key={choice.value}
