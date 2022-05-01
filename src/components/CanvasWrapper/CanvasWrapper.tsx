@@ -1,5 +1,5 @@
 import React, { CSSProperties, MutableRefObject, useRef } from "react";
-import { useDrawer } from "src/hooks/canvas";
+import { useDrawer, useKeyboardShortcuts, useUndoRedo } from "src/hooks/canvas";
 import useReset from "src/hooks/canvas/use-reset";
 import styled, { useTheme } from "styled-components";
 
@@ -16,6 +16,8 @@ const CanvasWrapper = ({ style }: CanvasProps) => {
   const canvasRef = useRef() as MutableRefObject<HTMLCanvasElement>;
   useDrawer({ canvasRef });
   useReset({ canvasRef });
+  useUndoRedo({ canvasRef });
+  useKeyboardShortcuts();
   const theme = useTheme();
 
   return (

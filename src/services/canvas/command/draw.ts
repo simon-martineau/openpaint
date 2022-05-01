@@ -1,4 +1,3 @@
-import Color from "color";
 import { Command } from "./command";
 
 export interface DrawCommandArgs {

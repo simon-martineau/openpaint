@@ -1,5 +1,5 @@
 import { MutableRefObject, useCallback, useEffect } from "react";
-import drawService from "src/services/canvas/draw";
+import drawService from "src/services/canvas/draw-service";
 import { ConfigState, useConfigStore } from "../../contexts/ConfigStore/ConfigStore";
 import { toCanvasCoordinates } from "../../helpers/canvas";
 import { useReducerRef } from "../ref";
@@ -75,6 +75,7 @@ const useDrawer = ({ canvasRef }: UseDrawerProps) => {
 
   const handleMouseUp = useCallback((e: MouseEvent) => {
     dispatch({ type: "pen_up" });
+    drawService.commit();
   }, []);
 
   const handleMouseDown = useCallback(
@@ -103,11 +104,9 @@ const useDrawer = ({ canvasRef }: UseDrawerProps) => {
   useEffect(() => {
     if (canvasRef.current) {
       const canvas = canvasRef.current;
-      // canvas.addEventListener("mousemove", handleMouseMove);
       canvas.addEventListener("mousedown", handleMouseDown);
 
       return () => {
-        // canvas.removeEventListener("mousemove", handleMouseMove);
         canvas.removeEventListener("mousedown", handleMouseDown);
       };
     }

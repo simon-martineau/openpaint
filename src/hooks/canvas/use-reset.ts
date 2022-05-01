@@ -1,4 +1,5 @@
 import React from "react";
+import drawService from "src/services/canvas/draw-service";
 import { useEventBus } from "../EventBus";
 
 type UseResetProps = {
@@ -8,7 +9,9 @@ type UseResetProps = {
 const useReset = ({ canvasRef }: UseResetProps) => {
   const performReset = () => {
     const context = canvasRef.current.getContext("2d");
-    context?.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    if (context) {
+      drawService.reset(canvasRef.current);
+    }
   };
 
   useEventBus("reset-canvas", performReset);
