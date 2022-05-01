@@ -96,7 +96,7 @@ const SelectMenu = (props: SelectMenuProps) => {
       <StyledMenu show={isActive} align={align} width={width}>
         {choices.map((choice, index) => (
           <StyledMenuButton
-            key={choice.value}
+            key={choice.label}
             onClick={() => handleChoiceClick(choice, index)}
             active={selectedChoiceIndex === index}
           >
