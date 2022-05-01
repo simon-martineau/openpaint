@@ -1,7 +1,7 @@
 import { MutableRefObject, useCallback, useEffect } from "react";
+import drawService from "src/services/canvas/draw";
 import { ConfigState, useConfigStore } from "../../contexts/ConfigStore/ConfigStore";
 import { toCanvasCoordinates } from "../../helpers/canvas";
-import { buildContextFromConfig } from "../../services/canvas-context-service";
 import { useReducerRef } from "../ref";
 import useGlobalEventListener from "../use-global-event-listener";
 
@@ -50,26 +50,22 @@ type UseDrawerProps = {
 
 const performDraw = (
   canvas: HTMLCanvasElement,
-  x1: number,
-  y1: number,
-  x2: number,
-  y2: number,
+  fromX: number,
+  fromY: number,
+  toX: number,
+  toY: number,
   config: ConfigState
 ) => {
-  // console.log(
-  //   `from: [${Math.floor(x1)}, ${Math.floor(y1)}], to: [${Math.floor(x2)}, ${Math.floor(y2)}]`
-  // );
-  const canvasContext = canvas?.getContext("2d") || null;
-  if (canvasContext !== null) {
-    const context = buildContextFromConfig(config, canvasContext);
-    context.beginPath();
-    context.moveTo(x1, y1);
-    context.lineTo(x2, y2);
-    context.stroke();
-    context.closePath();
-    // const toDraw = getImageDataFromPen(canvasContext);
-    // canvasContext.putImageData(toDraw, x2, y2);
-    return;
+  const context = canvas?.getContext("2d") || null;
+  if (context !== null) {
+    drawService.draw(context, {
+      fromX,
+      fromY,
+      toX,
+      toY,
+      color: config.color.hex(),
+      pensize: config.penSize,
+    });
   }
 };
 
