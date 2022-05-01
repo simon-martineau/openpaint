@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
 import styled from "styled-components";
+import ResetCanvasButton from "./ResetCanvasButton";
 import ThemeSelect from "./ThemeSelect";
 
 const StyledToolbar = styled.div`
@@ -34,7 +35,9 @@ interface ToolbarProps {
 const Toolbar = ({ style }: ToolbarProps) => {
   return (
     <StyledToolbar style={style}>
-      <StyledToolBarSection></StyledToolBarSection>
+      <StyledToolBarSection>
+        <ResetCanvasButton />
+      </StyledToolBarSection>
       <StyledToolBarSection>
         <ThemeSelect />
       </StyledToolBarSection>
