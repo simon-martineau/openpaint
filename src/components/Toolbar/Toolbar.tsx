@@ -9,10 +9,15 @@ const StyledToolbar = styled.div`
   position: relative;
   background-color: ${(props) => props.theme.toolbar};
   padding: 8px;
+`;
+
+const StyledContainer = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
 `;
 
 const StyledToolBarSection = styled.div`
@@ -40,15 +45,17 @@ interface ToolbarProps {
 const Toolbar = ({ style }: ToolbarProps) => {
   return (
     <StyledToolbar style={style}>
-      <StyledToolBarSection>
-        <ResetCanvasButton />
-        <UndoButton />
-        <RedoButton />
-      </StyledToolBarSection>
-      <StyledToolBarSection>
-        <ThemeSelect />
-      </StyledToolBarSection>
-      <StyledBranding>OpenPaint</StyledBranding>
+      <StyledContainer>
+        <StyledToolBarSection>
+          <ResetCanvasButton />
+          <UndoButton />
+          <RedoButton />
+        </StyledToolBarSection>
+        <StyledToolBarSection>
+          <ThemeSelect />
+        </StyledToolBarSection>
+        <StyledBranding>OpenPaint</StyledBranding>
+      </StyledContainer>
     </StyledToolbar>
   );
 };
