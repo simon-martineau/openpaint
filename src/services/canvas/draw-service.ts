@@ -32,17 +32,14 @@ const flushBuffer = () => {};
 
 const executeAndTrack = (command: Command, context: CanvasRenderingContext2D) => {
   if (commitedIndex !== stack.length - 1) {
-    console.log(`Severing head, commandIndex is ${commitedIndex}, stack size is ${stack.length}`);
     severHead();
   }
 
   command.execute(context);
   bufferGroup.addCommand(command);
-  console.log("Commit index is now:", commitedIndex);
 };
 
 export const commit = () => {
-  console.log("commit called");
   if (!bufferGroup.empty()) {
     stack.push(bufferGroup);
     bufferGroup = new CommandGroup();
@@ -51,14 +48,11 @@ export const commit = () => {
 };
 
 export const undo = (context: CanvasRenderingContext2D) => {
-  console.log("undo, stack size is:", stack.length);
-  console.log("undo, commit index is:", stack.length);
   if (!bufferGroup.empty()) {
     flushBuffer();
   }
   if (commitedIndex >= 0) {
     --commitedIndex;
-    console.log("commit index is now", commitedIndex);
     redrawAllUpTo(context, commitedIndex);
   }
 };

@@ -13,7 +13,6 @@ const as2dCoordinate = (sizeX: number, sizeY: number, i: number): Point => {
 };
 
 const createPen = (context: CanvasRenderingContext2D, diameter: number) => {
-  console.log("create pen");
   const imageData = context.createImageData(diameter, diameter);
   const radius = diameter / 2;
   const center = Math.floor(diameter / 2);
