@@ -49,7 +49,7 @@ const Footer = (props: FooterProps) => {
       <StyledFooterSection justify="right">
         <span style={{ fontSize: "0.9em" }}>© 2022 Simon Martineau </span>
       </StyledFooterSection>
-      <StyledFooterSection justify="center">|</StyledFooterSection>
+      <StyledFooterSection justify="center">/</StyledFooterSection>
       <StyledFooterSection>
         <span style={{ fontSize: "0.9em" }}>simon.martineau.dev@gmail.com</span>
 
