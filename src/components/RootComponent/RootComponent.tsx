@@ -1,5 +1,6 @@
 import styled, { createGlobalStyle } from "styled-components";
 import CanvasWrapper from "../CanvasWrapper";
+import Footer from "../Footer";
 import PaintBar from "../PaintBar";
 import Toolbar from "../Toolbar";
 
@@ -31,6 +32,7 @@ const RootComponent = () => {
         {/* <div style={{ flexShrink: 1, flexGrow: 1, height: "550", backgroundColor: "#ff0000" }} /> */}
         <CanvasWrapper style={{ flexShrink: 1, flexGrow: 1, minWidth: 0 }} />
       </StyledPaintContainer>
+      <Footer />
     </StyledRoot>
   );
 };

@@ -16,6 +16,7 @@ export type OpenPaintThemeSpecification = {
   };
   canvasBorder: string;
   text: string;
+  textDisabled: string;
 };
 
 export const defaultTheme: OpenPaintThemeSpecification = {
@@ -36,13 +37,14 @@ export const defaultTheme: OpenPaintThemeSpecification = {
   },
   canvasBorder: "1px solid #9149D9",
   text: "#eee",
+  textDisabled: "#999",
 };
 
 export const sketchBookTheme: OpenPaintThemeSpecification = {
   background: "#F4E3C5",
   toolbar: "#816D51",
   toolbarItem: "#eee",
-  highlight: "#816D51",
+  highlight: "#c49678",
   highlightContrast: "#FFF",
   menuBackground: "#EEE",
   branding: "#ddd",
@@ -56,6 +58,7 @@ export const sketchBookTheme: OpenPaintThemeSpecification = {
   },
   canvasBorder: "1px solid #D4BB9F",
   text: "#eee",
+  textDisabled: "#eee",
 };
 
 export interface OpenPaintTheme {

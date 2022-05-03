@@ -14,6 +14,7 @@ const StyledPaintBar = styled.div`
   gap: 16px;
   flex-direction: column;
   padding: 32px 12px;
+  overflow-y: auto;
 `;
 
 const PaintBar = ({ style }: PaintBarProps) => {
