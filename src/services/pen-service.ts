@@ -1,3 +1,6 @@
+/* istanbul ignore file */
+/* This file is unused but may be reused very soon. For now, we ignore the coverage */
+
 type Point = [number, number];
 type PenCache = {
   [key: string]: ImageData;
