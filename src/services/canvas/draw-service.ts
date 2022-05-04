@@ -1,5 +1,6 @@
-import { Command, CommandGroup } from "./command/command";
-import { DrawCommand, DrawCommandArgs } from "./command/draw";
+import { Command } from "./command/command";
+import { CommandGroup } from "./command/command-group";
+import { DrawCommand, DrawCommandArgs } from "./command/draw-command";
 
 let stack: CommandGroup[] = [];
 let commitedIndex = -1;
