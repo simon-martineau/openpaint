@@ -29,7 +29,13 @@ export const draw = (context: CanvasRenderingContext2D, args: DrawCommandArgs) =
   executeAndTrack(command, context);
 };
 
-const flushBuffer = () => {};
+const flushBuffer = () => {
+  if (!bufferGroup.empty()) {
+    stack.push(bufferGroup);
+    bufferGroup = new CommandGroup();
+    ++commitedIndex;
+  }
+};
 
 const executeAndTrack = (command: Command, context: CanvasRenderingContext2D) => {
   if (commitedIndex !== stack.length - 1) {
@@ -41,11 +47,7 @@ const executeAndTrack = (command: Command, context: CanvasRenderingContext2D) =>
 };
 
 export const commit = () => {
-  if (!bufferGroup.empty()) {
-    stack.push(bufferGroup);
-    bufferGroup = new CommandGroup();
-    ++commitedIndex;
-  }
+  flushBuffer();
 };
 
 export const undo = (context: CanvasRenderingContext2D) => {

@@ -1,14 +1,9 @@
+import { createMockContext } from "src/tests/helpers/create-mock-context";
 import { DrawCommand, DrawCommandArgs } from "./draw-command";
 
-const mockContext: jest.Mocked<CanvasRenderingContext2D> = {
-  beginPath: jest.fn(),
-  moveTo: jest.fn(),
-  stroke: jest.fn(),
-  lineTo: jest.fn(),
-  closePath: jest.fn(),
-} as any as jest.Mocked<CanvasRenderingContext2D>;
-
 describe("DrawCommand", () => {
+  let mockContext = createMockContext();
+
   it("should correctly draw on context depending on args", () => {
     const args: DrawCommandArgs = {
       fromX: 0,
